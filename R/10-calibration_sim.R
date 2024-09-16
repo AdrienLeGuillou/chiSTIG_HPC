@@ -148,17 +148,17 @@ scenarios_df <- tibble(
   # Arrival Rate (Population Size)
   # a.rate = seq(0.001386813, 0.001386813, length.out = n_scenarios)#,
 
- #  # Exogenous Infection Rates
-  exo.trans.prob.B = seq(0.99, 0.99, length.out = n_scenarios), #
-  exo.trans.prob.H = seq(0.20, 0.30, length.out = n_scenarios),
-  exo.trans.prob.O = seq(0.18, 0.18, length.out = n_scenarios),
-  exo.trans.prob.W = seq(.08, .08, length.out = n_scenarios),
+  # Exogenous Infection Rates
+  # exo.trans.prob.B = seq(0.4900, 0.4900, length.out = n_scenarios), #
+  # exo.trans.prob.H = seq(0.2000, 0.2000, length.out = n_scenarios),
+  # exo.trans.prob.O = seq(0.1725, 0.1725, length.out = n_scenarios),
+  # exo.trans.prob.W = seq(0.0900, 0.0900, length.out = n_scenarios),
  #
   # HIV Testing Rate
-   hiv.test.rate_1 = seq(0.0038, 0.0038, length.out = n_scenarios),
-   hiv.test.rate_2 = seq(0.004192807, 0.004192807, length.out = n_scenarios),
-   hiv.test.rate_3 = seq(.0054, 0.0055, length.out = n_scenarios),
-   hiv.test.rate_4 = seq(0.0046625, 0.0046625, length.out = n_scenarios),
+   # hiv.test.rate_1 = seq(0.0041, 0.0041, length.out = n_scenarios),
+   # hiv.test.rate_2 = seq(0.004192807, 0.004192807, length.out = n_scenarios),
+   # hiv.test.rate_3 = seq(.0042, 0.0048, length.out = n_scenarios),
+   # hiv.test.rate_4 = seq(0.0055, 0.0055, length.out = n_scenarios),
  #
  #  # Probability that an HIV+ node will initiate ART treatment
  #  tx.init.rate_1 = seq(0.3622703, 0.3622703, length.out = n_scenarios),
@@ -177,15 +177,15 @@ scenarios_df <- tibble(
  # prep.start.prob_4 = seq(     0.765625,      1, length.out = n_scenarios),
 
  #  # ART halting
-  tx.halt.partial.rate_1 = seq(     0.004825257,      0.004825257, length.out = n_scenarios),
-  tx.halt.partial.rate_2 = seq(     0.00453566,      0.00453566, length.out = n_scenarios),
-  tx.halt.partial.rate_3 = seq(     0.003050059,      0.003050059, length.out = n_scenarios),
-  tx.halt.partial.rate_4 = seq(     0.003050059,      0.003050059, length.out = n_scenarios),
+  # tx.halt.partial.rate_1 = seq(     0.004825257,      0.004825257, length.out = n_scenarios),
+  # tx.halt.partial.rate_2 = seq(     0.00453566,      0.00453566, length.out = n_scenarios),
+  # tx.halt.partial.rate_3 = seq(     0.003050059,      0.003050059, length.out = n_scenarios),
+  # tx.halt.partial.rate_4 = seq(     0.003050059,      0.003050059, length.out = n_scenarios),
 
-  tx.halt.full.or_1 = seq(     0.9,      0.9, length.out = n_scenarios),
-  tx.halt.full.or_2 = seq(     0.63,      0.63, length.out = n_scenarios),
-  tx.halt.full.or_3 = seq(     1.45,      1.45, length.out = n_scenarios),
-  tx.halt.full.or_4 = seq(     1.25,      1.25, length.out = n_scenarios),
+  # tx.halt.full.or_1 = seq(     0.9,      0.9, length.out = n_scenarios),
+  # tx.halt.full.or_2 = seq(     0.63,      0.63, length.out = n_scenarios),
+  # tx.halt.full.or_3 = seq(     1.45,      1.45, length.out = n_scenarios),
+  # tx.halt.full.or_4 = seq(     1.25,      1.25, length.out = n_scenarios),
  #
  #
  # # ART reinitiation after disengagement (Keep Fixed for now,
@@ -209,10 +209,10 @@ scenarios_df <- tibble(
  # hiv.trans.scale_4 = seq(     0.8,      1.2, length.out = n_scenarios)
 
  # This was for calibrating on prevalence
- hiv.trans.scale_1 = seq(     21,       21, length.out = n_scenarios),
- hiv.trans.scale_2 = seq(     2.7,        2.7, length.out = n_scenarios),
- hiv.trans.scale_3 = seq(     3.3,      3.3, length.out = n_scenarios),
- hiv.trans.scale_4 = seq(     1.6,      1.6, length.out = n_scenarios)
+ hiv.trans.scale_1 = seq(       17,     19, length.out = n_scenarios),
+ hiv.trans.scale_2 = seq(     5.2,      5.2, length.out = n_scenarios),
+ hiv.trans.scale_3 = seq(     3.04,      3.04, length.out = n_scenarios),
+ hiv.trans.scale_4 = seq(     1,      1, length.out = n_scenarios)
 
   # tt.partial.supp.prob_1 = c(0, .2),
   # tt.partial.supp.prob_2 = c(0, .2),
@@ -270,7 +270,7 @@ start_time <- Sys.time()
 
 EpiModelHPC::netsim_scenarios(
   path_to_est, param, init, control, scenarios_list,
-  n_rep = 10,
+  n_rep = 1,
   n_cores = 10,
   output_dir = "data/intermediate/calibration",
   #libraries = NULL,
@@ -282,3 +282,5 @@ end_time <- Sys.time()
 
 # Check the files produced
 list.files("data/intermediate/calibration")
+
+
